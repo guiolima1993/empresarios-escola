@@ -1,0 +1,12 @@
+{
+  "name": "pagina-captura-projeto-1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pagina de captura X Franchise - site estatico (HTML/CSS/JS)",
+  "scripts": {
+    "dev": "serve -l 8001"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

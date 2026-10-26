@@ -248,34 +248,6 @@ if (statNumbers.length) {
   statNumbers.forEach((el) => statsObserver.observe(el));
 }
 
-// Envio do formulário de captura
-const form = document.getElementById('captureForm');
-const formSuccess = document.getElementById('formSuccess');
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const data = Object.fromEntries(new FormData(form).entries());
-
-  // TODO: integrar com o endpoint/CRM/Webhook responsável por receber o lead.
-  // Exemplo:
-  // fetch('https://seu-endpoint.com/leads', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data),
-  // });
-
-  console.log('Lead capturado:', data);
-
-  form.hidden = true;
-  formSuccess.hidden = false;
-});
-
 // Proteção básica de conteúdo (dissuasão contra cópia casual)
 document.addEventListener('contextmenu', (e) => {
   if (!e.target.closest('input, textarea')) e.preventDefault();
@@ -292,11 +264,7 @@ document.addEventListener('copy', (e) => {
 document.addEventListener('keydown', (e) => {
   const k = e.key.toLowerCase();
   const editing = e.target.closest('input, textarea');
-  if (
-    e.key === 'F12' ||
-    (e.ctrlKey && !editing && ['s', 'u', 'p', 'c'].includes(k)) ||
-    (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(k))
-  ) {
+  if (e.ctrlKey && !editing && ['s', 'u', 'p', 'c'].includes(k)) {
     e.preventDefault();
   }
 });
